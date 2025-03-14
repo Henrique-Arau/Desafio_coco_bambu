@@ -1,17 +1,24 @@
-*** Settings ***
+***Settings***
 
-Documentation        Cenários de testes de Voucher
 
+Library              SeleniumLibrary
+Library              FakerLibrary
 Resource             ../resources/Base.resource
-Library               Browser
-
-Test Setup           start session
-Test Teardown        Take Screenshot
-
 
 
 *** Test Cases ***
+Compra de voucher
+    Dado que o site do Coco Bambu seja acessado
+    Quando o usuário selecionar a aba de Vouchers
+    # E selecionar o Estado desejado
 
-Validar erro ao preencher forma de pagamento
+    Então o usuário será direcionado para a tela de opções de Vouchers
+    E irá selecionar o voucher de Campanha de Testes para a região do Lago Sul
 
-     Go to voucher page
+    Quando o usuário visualizar a página e ler as Regras
+    Então retornará para a aba de Detalhes e irá fazer o cadastro
+    E irá válidar a autenticação
+
+    Então irá selecionar a forma de pagamento
+    E irá preencher os dados complementares
+    E selecionar a quantidade de Créditos

@@ -1,5 +1,5 @@
-{"level":30,"time":"2025-03-14T20:45:50.019Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Listening on 62313"}
-(node:18424) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+{"level":30,"time":"2025-03-14T21:18:05.434Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"Listening on 62640"}
+(node:8064) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 ================= Original suppressed error =================
 Error: Browser has been closed.
@@ -14,10 +14,8 @@ Error: Browser has been closed.
     at endReadableNT (node:internal/streams/readable:1400:12)
     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 =============================================================
-{"level":30,"time":"2025-03-14T20:45:50.201Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:50.202Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:50.212Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:50.212Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-03-14T21:18:06.031Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-03-14T21:18:06.032Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
 ================= Original suppressed error =================
 Error: Browser has been closed.
     at PlaywrightState.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:12223:15)
@@ -31,56 +29,7 @@ Error: Browser has been closed.
     at endReadableNT (node:internal/streams/readable:1400:12)
     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 =============================================================
-{"level":30,"time":"2025-03-14T20:45:50.763Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:50.764Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:50.772Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:50.772Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-================= Original suppressed error =================
-Error: Browser has been closed.
-    at PlaywrightState.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:12223:15)
-    at PlaywrightServer.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:13119:59)
-    at PlaywrightServer.setTimeout (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:13367:57)
-    at Object.onReceiveHalfClose (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1425:25)
-    at BaseServerInterceptingCall.maybePushNextMessage (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:570:31)
-    at BaseServerInterceptingCall.handleEndEvent (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:610:14)
-    at ServerHttp2Stream.<anonymous> (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:377:18)
-    at ServerHttp2Stream.emit (node:events:529:35)
-    at endReadableNT (node:internal/streams/readable:1400:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
-=============================================================
-{"level":30,"time":"2025-03-14T20:45:51.387Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:51.387Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:51.422Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:51.422Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-================= Original suppressed error =================
-Error: Browser has been closed.
-    at PlaywrightState.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:12223:15)
-    at PlaywrightServer.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:13119:59)
-    at PlaywrightServer.setTimeout (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:13367:57)
-    at Object.onReceiveHalfClose (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1425:25)
-    at BaseServerInterceptingCall.maybePushNextMessage (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:570:31)
-    at BaseServerInterceptingCall.handleEndEvent (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:610:14)
-    at ServerHttp2Stream.<anonymous> (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:377:18)
-    at ServerHttp2Stream.emit (node:events:529:35)
-    at endReadableNT (node:internal/streams/readable:1400:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
-=============================================================
-{"level":30,"time":"2025-03-14T20:45:51.989Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:51.989Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-================= Original suppressed error =================
-Error: Browser has been closed.
-    at PlaywrightState.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:12223:15)
-    at PlaywrightServer.getActiveBrowser (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:13119:59)
-    at PlaywrightServer.setTimeout (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js:13367:57)
-    at Object.onReceiveHalfClose (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1425:25)
-    at BaseServerInterceptingCall.maybePushNextMessage (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:570:31)
-    at BaseServerInterceptingCall.handleEndEvent (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:610:14)
-    at ServerHttp2Stream.<anonymous> (C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:377:18)
-    at ServerHttp2Stream.emit (node:events:529:35)
-    at endReadableNT (node:internal/streams/readable:1400:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
-=============================================================
-{"level":30,"time":"2025-03-14T20:45:52.034Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:52.035Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2025-03-14T20:45:52.132Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method closeAllBrowsers"}
-{"level":30,"time":"2025-03-14T20:45:52.132Z","pid":18424,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method closeAllBrowsers"}
+{"level":30,"time":"2025-03-14T21:18:06.077Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-03-14T21:18:06.077Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-03-14T21:18:06.150Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2025-03-14T21:18:06.150Z","pid":8064,"hostname":"LAPTOP-BN36TI4K","msg":"End of node method closeAllBrowsers"}

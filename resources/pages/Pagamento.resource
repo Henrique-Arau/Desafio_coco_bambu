@@ -1,9 +1,9 @@
-**Settings**
+*** Settings ***
+
 Library         SeleniumLibrary
 Library         FakerLibrary
-Resource        variables/mapa.robot
 
-* Keywords *
+*** Keywords ***
 Dado que o site do Coco Bambu seja acessado
     Open Browser                    ${URL}    ${BROWSER}
     Maximize Browser Window
