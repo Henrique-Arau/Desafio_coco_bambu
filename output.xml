@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.0 on win32)" generated="2025-03-14T02:18:17.967170" rpa="false" schemaversion="5">
+<suite id="s1" name="Remover Item Carrinho" source="c:\Desafio coco bambu\tests\remover_item_carrinho.robot">
+<test id="s1-t1" name="Remover Item do Carrinho" line="10">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-03-14T02:18:21.227105" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>dummyjson</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-03-14T02:18:21.226107" elapsed="0.013977"/>
+</kw>
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2025-03-14T02:18:21.254117" level="FAIL">MissingSchema: Invalid URL '/ carts /1': No scheme supplied. Perhaps you meant https:/// carts /1?</msg>
+<var>${response}</var>
+<arg>/ carts /${CART_ID}</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="FAIL" start="2025-03-14T02:18:21.243092" elapsed="0.020583">MissingSchema: Invalid URL '/ carts /1': No scheme supplied. Perhaps you meant https:/// carts /1?</status>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2025-03-14T02:18:21.265670" elapsed="0.001010"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-14T02:18:21.268676" elapsed="0.001017"/>
+</kw>
+<status status="FAIL" start="2025-03-14T02:18:21.212037" elapsed="0.059637">MissingSchema: Invalid URL '/ carts /1': No scheme supplied. Perhaps you meant https:/// carts /1?</status>
+</test>
+<doc>Este teste remove um item do carrinho utilizando uma requisição HTTP DELETE</doc>
+<status status="FAIL" start="2025-03-14T02:18:17.988639" elapsed="3.392299"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Remover Item Carrinho">Remover Item Carrinho</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-14T02:18:19.462859" level="WARN">Error in file 'c:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>

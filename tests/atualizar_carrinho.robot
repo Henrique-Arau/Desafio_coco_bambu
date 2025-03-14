@@ -5,8 +5,6 @@ Library        RequestsLibrary
 
 Resource             ../resources/Base.resource
 
-Test Setup           start session
-Test Teardown        Take Screenshot
 
 *** Test Cases ***
 

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation        variables de atualizar carrinho 
+Documentation        variables de atualizar item do carrinho 
 
 Library              RequestsLibrary
 

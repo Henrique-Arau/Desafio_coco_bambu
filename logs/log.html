@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0.1 (Python 3.12.0 on win32)" name="Generator">
+<meta content="Robot Framework 7.2.2 (Python 3.12.0 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1252,58 +1252,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1522,7 +1512,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -2081,31 +2071,31 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,4,[],[0,0,18351],[],[[5,0,0,[],[0,10314,7850,6],[[1,7,8,0,0,0,0,0,[1,10319,7566],[[0,9,10,0,11,12,0,13,[1,10320,1331],[[10321,2,14],[11651,2,15]]],[0,16,10,0,17,18,0,13,[1,11652,6233],[[17883,2,19],[17883,2,20]]]]],[0,21,22,0,0,23,0,0,[1,17886,1],[[0,24,25,0,26,27,0,0,[1,17887,0],[[17887,2,28]]]]],[0,5,22,0,0,29,30,0,[0,17888,53],[[0,31,32,0,33,34,35,0,[1,17889,1],[[17889,2,36]]],[0,37,25,0,38,39,30,0,[0,17890,50],[[17890,3,41],[17892,5,6]]],[8,0,0,0,0,30,0,0,[3,17941,0],[]]]],[0,42,22,0,0,30,0,0,[3,17942,0],[]],[2,43,10,0,44,0,0,45,[1,17944,219],[[18163,2,46]]]]]],[],[1,0,1,0]];
+window.output["suite"] = [1,2,3,4,[],[0,0,202],[],[[5,0,0,[],[0,187,12,6],[[0,7,0,0,0,8,0,0,[0,190,1],[[191,5,6]]],[0,9,10,0,11,12,13,0,[3,192,1],[]],[0,9,10,0,11,14,15,0,[3,194,0],[]],[0,16,0,0,0,17,18,0,[3,195,0],[]],[0,19,10,0,20,21,0,0,[3,196,0],[]],[0,22,10,0,23,24,0,0,[3,198,0],[]]]]],[],[1,0,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Adicionar Item Carrinho","*C:\\Desafio coco bambu\\tests\\adicionar_item_carrinho.robot","*../tests/adicionar_item_carrinho.robot","*<p>Testes de adiciona itens ao carrinho para um usuário especifico\x3c/p>","*Adicionar itens ao carrinho","*ValueError: not enough values to unpack (expected 2, got 1)","*start session","*Base","*New Browser","*Browser","*<p>Create a new playwright Browser with specified options.\x3c/p>","*browser=chromium    headless=False","*BrowserControl, Setter","eNptj00LwjAMhv/K6NlJdVPnriq6w0T8uOWSdpkbdAbaTQXxv1tUUMHcnud9A8lNKMsXR1akgdCV5abuGtELREVYGHLO+xKNo94n3uGpUHz9Sgo6t8zmu1z5kqFdtlwdNl63tvux2Xr/x+4X2/yjneFLzp5lX3ps64a4az1H0s/LWdTk5vXz/FkKMCeHZc2BZs2BwkZ1AIaPDuD9J8BrBwBHejwcaBXSIMEwLtQoTIaTOIziMiGMSMrpWNwfcIlceQ==","*Successfully created browser with options: {\"browser\":\"chromium\",\"headless\":false,\"chromiumSandbox\":false,\"devtools\":false,\"handleSIGHUP\":true,\"handleSIGINT\":true,\"handleSIGTERM\":true,\"slowMo\":0,\"timeout\":30000,\"tracesDir\":\"C:\\\\Desafio coco bambu\\\\logs\\\\browser\\\\traces\\\\a5c621cb-e18a-4db5-8274-34f8ea3e0096\"}","*New Page","*<p>Open a new Page.\x3c/p>","*<a href=\"https://app-hom.cocobambu.com/delivery\">https://app-hom.cocobambu.com/delivery\x3c/a>","*Successfully initialized new page object and opened url: <a href=\"https://app-hom.cocobambu.com/delivery\">https://app-hom.cocobambu.com/delivery\x3c/a>","*No context was open. New context was automatically opened when this page is created.","*Criar sessão","*Api_carrinho","*dummyjson    ${BASE_URL}","*Create Session","*RequestsLibrary","*<p>Create Session: create a HTTP session to a server\x3c/p>","*${alias}    ${url}","eNptjEEOwjAMBL/iB0SUcyWfkDhy4QWhMY0hias4rqgQf0dVEafubXZWe6rkG5cRrqTKUsB0pR58Yq8YLOfloVIcWE0YW5u077p/fRgkO4jkA1XF98fBXgaRJ9PmvbWIFynkoHEmsfajqcprHW00U+X7gmeflPZPA91sxCN8Ad19PNs=","*${USER_ID}    ${PRODUCTS}","*${response}","*Create Dictionary","*BuiltIn","*<p>Creates and returns a dictionary based on the given <code>items\x3c/code>.\x3c/p>","*userId=${user_id}    products=${produtos}","*&amp;{payload}","*&amp;{payload} = { userId=1 | products=id=144 quantity=4 id=98 quantity=1 }","*Post Request","*<p><b>DEPRECATED\x3c/b> Please use `POST On Session` instead.\x3c/p>","*dummyjson    /carts/add    json=${payload}    headers={'Content-Type': 'application/json'}","*s1-t1-k3-k2","*Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.","*Verificar resposta","*Take Screenshot","*<p>Takes a screenshot of the current window or element and saves it to disk.\x3c/p>","*PageContent","eNqlj0sKwyAQQK8is09N6aYL9SrFz0RDEkfGAXP8hlLoAbp4u8eDZ7QkZ7SwMx+SirT35quFBzjjVWFcLASm0ZF1j4xYeyHRTIFkYX/gIN6mrzH9jOl+azWDEs8ZxcIr7L5uV3Q9suoc/6uONUmx8JzndoK+Frx7A26lSVM=","*Error in file 'C:\\Desafio coco bambu\\resources\\pages\\Api_carrinho.resource' on line 25: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead."]);
+window.output["strings"] = window.output["strings"].concat(["*","*Atualizar Carrinho","*C:\\Desafio coco bambu\\tests\\atualizar_carrinho.robot","*../tests/atualizar_carrinho.robot","*<p>Este teste atualiza a quantidade de um item no carrinho utilizando uma requisição HTTP PUT\x3c/p>","*Atualizar Item no Carrinho","*No keyword with name 'Create Session' found.","*Create Session","*carrinho    ${URL_BASE}","*Create Dictionary","*BuiltIn","*<p>Creates and returns a dictionary based on the given <code>items\x3c/code>.\x3c/p>","*Content-Type=application/json","*${headers}","*merge=${True}    products=${products}","*${body}","*PUT On Session","*carrinho    /    headers=${headers}    json=${body}","*${response}","*Should Be Equal As Numbers","*<p>Fails if objects are unequal after converting them to real numbers.\x3c/p>","*${response.status_code}    200","*Log","*<p>Logs the given message with the given level.\x3c/p>","*${response.json()}","eNp9j09PwzAMxe/9FL4VDlRicOoNsaFNKqWCXpAiITd1t4g0Lk46sX160k1cyp+b/bP9/N5KhAWMg85YgvQ+V0vy2BkGzZqhwb4ZVSAfvMIwojVHlDeNIsbtOBNuOKTADqxxBLc5bPqBJRi3jaQRlAOkz/QxTgLFGaTQYfzV5vDI7Wip5PDAo2tXk5McSob+xMFhT+3P86QW1NSgfoeLnn0AIU0ugEZrwaIPl3kCUcZRUr3W66eyuqvXE/o9W7Ynt1cvWswQM54CZfRJ5/3qEHbsbq4XaviusqMZ5sNlUfg5i3ZnKLb6bwv/Tyc55U2gqyEGxy35LyDQmF4=","eNp9j8tOwzAQRff5itkFFkTiscqO0qIihRCJbJC8GTuTYmF7orFTKF9PAqqQIuhu7rlz57ERYQEboLeOIL8r1Zoi9pbBsGHQ6PWohCKPYiiqFUYqjjIHDuBsILgp4cEPLMmG3US0oBwgXwm/R5IcepyGdyU8cjc6qjnd8xi6zby6hJrBf3MI6Kn7jWWtoCGN5g3OPMcEQoZCAoPOgcOYzssMpnigrHlpt091c9tuZ/T3E8Wewl49G7FDikpYcyrog376m0N65XB9eaWGY1V82mFprqsqLlll9QJN0vx/wml3HqeiTXQxTI/jjuIXUeaOpw==","eNp9kE1LxDAQhu/9FXOrHiz4cepN3ZUVai1YECGXJJ2uwSQTJunq+utNlUUorpdh5pmvd2bNTAzGw2gsQnlbixVGORoCTZpASacmwRhpYo1RBLnN9hmtJofVgZdAHqzxCFc13LtAnIzfZqJY8h7KG6b3iFzCKPOWoYYHGiaLLaU7mvywnjXU0BK4bw5eOhx+24qepUYl9RucOIoJGDX6BFpaC1bGdFoXkNs9Ft1Lv3lsu+t+M6O/r6l26HfiSbMJKQomRanCD/yp7/bplfzl+YUIB6/6NGGZXDVNXLLGqAXKoT4u4f/sPE5Ek/As5MPnt38BaSmSZA==","eNp9kE1LxDAQhu/9FXOrHiz4cepN3ZUVai3Yi5BLkk5rMMmESbq6/npTZRGKehlmnne+t8zEYDyMxiKUt7XYYJSjIdCkCZR0ahaMkWbWGEWQU7adnKRDn6g6KiWQB2s8wlUN9y4QJ+OnTBRLPkB5w/QWkUsYZZ4z1PBAw2yxpXRHsx+2yxY1tATui4PP/YefsqJnqVFJ/QonjmICRp3ng5bWgpUxndYF5HKPRffc7x7b7rrfLej3e6o9+r140mxCioJJUarwHb/zu0N6IX95fiHC0as+TFiLm6aJa9YYtUI51H+v8L+6tBPRJDwL+fDl8Z/AyJM0","*Error in file 'C:\\Desafio coco bambu\\resources\\pages\\Adicionar_carrinho.resource' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.","eNp9kU1Lw0AQhu/5FXOLHgz4ccqt2kqFGAPmIizI7mbSLiYzy+ymWn+9G6UIxXoZZp75fJmVCAs4gt4NCPldqZYYdO8YLFsGo0czKcHAk1gMyutNsovOWcek5dVqEUdbLg4lOTDB4AjhpoSH0bNER5tEjGjZQ34r/B5Qcuh1WtiV8MjdNGDN8Z4n6lbzOSXUDOM3B9Ijdr9tWSvaotH2Dc5GDhEELVIEq4cBBh3ieZlBaifMmpd2/VQ3i3Y9o7+FFTuknXq24nwMSthwLPADf+qbfdwyXV9eKX/wik/nj5PLqgrHrHLmCKXQnj7h/+w8TgUX8cIn4fMHvgDZLZbX","eNp9kU1PwzAMhu/7Fb4VDlQCxKW3iQ0NqZQKekGKhNLU3SJSOzjpxPj1pEy7lI+LZT/+ei2vRVjAEvTWIWS3hVph0L1lMGwYWj20oxIMPIrBoLzeJrvsrLFMWl6NFrG04/xUkgETOEsINwXcD54lWtom0oqWA2RP+D5iiKE8ggx6nRZ3BTxwNzqsON7xSN16klVAxTB8cyA9YPezfdGINthq8wZnA4cIggYpgtHOgdMhnhcLSGMIF/VLs3ms6mWzmdDvh+Z7pL16NmJ9DEq45ZjjBx7r60PcMV1fXil/8vJP6+fJVVmGOUtyZyiF5m8J/2encSrYiBc+HT595AvzmZ1y","eNp9kT1Pw0AMhvf8Cm+BgUh8TNkqWlSkECLIgnQSci5Oe+JyDr5LRfvruVB1CZTFsh9/vZZXIixgHHTGEqT3uVqSx84waNYMDfbNqIQ8j6LJqwE30S7CiNYcUN41ihi35exUkgI7sMYR3OXw2A8swbhNJI2g7CF9oc+RfPDFEaTQYVzc5vDE7Wip5PDAo2tXk6wcSob+h4PDntrf7UktqKlB/QEXPfsAQppcAI3WgkUfLvME4hhHSfVWr5/LalGvJ/T3odmO3E69ajFD8Eq44ZDRFx3rq33Ysru9vlHDycsOZpgnl0Xh5yzKnaEY6vMS/s9O45Q3ga6GePj0kW8ot52U","eNp9kUtPwzAMx+/9FL4VDlTiceoNsaEhlVKNXpAioTR1t4gkDk5aMT49KdMu5XGx7J9ff8trZmLQDgZtEPK7UqwwyEETKFIEnbTdKBgDjawwCC93yW7R0oT8qiSzdnsqTgU5kAOjHcJNCQ/WE0ftdol0LPkA+RbfRwwxVEeQwyDT2r6ER+pHgzXFexpdv55FlVAT2G8OTlrsf7ZnLUuFnVRvcGYpRGBU6CIoaQwYGeJ5mUEa4zBrXtrNU93ctpsZ/X5mMaGbxLNi7WMQTB3FAj/wWN8c4p7c9eWV8Cev+NR+mVxVVViyJHeBUqj+lvB/dh4ngo544dPh8z++AMD2nMc="]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:08","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:18","fail":1,"id":"s1","label":"Adicionar Item Carrinho","name":"Adicionar Item Carrinho","pass":0,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:00","fail":1,"id":"s1","label":"Atualizar Carrinho","name":"Atualizar Carrinho","pass":0,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [[1390,3,47],[17890,3,41,40]];
+window.output["errors"] = [[73,4,25],[84,4,26],[97,4,27],[110,4,28],[121,3,29],[128,4,30],[135,4,31],[167,4,32],[181,4,33]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1741921787749;
+window.output["baseMillis"] = 1741929429203;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 18425;
+window.output["generated"] = 246;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
 </script>
 <script type="text/javascript">
-window.settings = {"defaultLevel":"INFO","minLevel":"INFO","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
+window.settings = {"defaultLevel":"INFO","minLevel":"FAIL","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
 </script>
 <title></title>
 </head>
@@ -2214,7 +2204,7 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr class="row-${$item.index}">
-    <td class="stats-col-name" title="{{html doc}}">
+    <td class="stats-col-name" title="${doc}">
       <div class="stat-name">
         <span>{{html label}}</span>
         {{if info}}(${info}){{/if}}

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation            Garantir a funcionalidade das APIs do carrinho
+Documentation            Garantir a funcionalidade das APIs do adicionar item do carrinho
 
 Library                  Browser
 Library                  RequestsLibrary

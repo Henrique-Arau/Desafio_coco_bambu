@@ -1,84 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0.1 (Python 3.12.0 on win32)" generated="2025-03-14T00:09:47.746858" rpa="false" schemaversion="5">
-<suite id="s1" name="Adicionar Item Carrinho" source="C:\Desafio coco bambu\tests\adicionar_item_carrinho.robot">
-<test id="s1-t1" name="Adicionar itens ao carrinho" line="13">
-<kw name="start session" owner="Base" type="SETUP">
-<kw name="New Browser" owner="Browser">
-<msg time="2025-03-14T00:09:58.069712" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Desafio coco bambu\\logs\\browser\\traces\\a5c621cb-e18a-4db5-8274-34f8ea3e0096"}</msg>
-<msg time="2025-03-14T00:09:59.399626" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Desafio coco bambu\\logs\\browser\\traces\\a5c621cb-e18a-4db5-8274-34f8ea3e0096"}</msg>
-<arg>browser=chromium</arg>
-<arg>headless=False</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2025-03-14T00:09:58.068708" elapsed="1.330918"/>
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-14T02:17:09.198928" rpa="false" schemaversion="5">
+<suite id="s1" name="Atualizar Carrinho" source="C:\Desafio coco bambu\tests\atualizar_carrinho.robot">
+<test id="s1-t1" name="Atualizar Item no Carrinho" line="11">
+<kw name="Create Session">
+<msg time="2025-03-14T02:17:09.394097" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>carrinho</arg>
+<arg>${URL_BASE}</arg>
+<status status="FAIL" start="2025-03-14T02:17:09.393116" elapsed="0.000981">No keyword with name 'Create Session' found.</status>
 </kw>
-<kw name="New Page" owner="Browser">
-<msg time="2025-03-14T00:10:05.632298" level="INFO">Successfully initialized new page object and opened url: https://app-hom.cocobambu.com/delivery</msg>
-<msg time="2025-03-14T00:10:05.632298" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>https://app-hom.cocobambu.com/delivery</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2025-03-14T00:09:59.400635" elapsed="6.232669"/>
-</kw>
-<status status="PASS" start="2025-03-14T00:09:58.067708" elapsed="7.565596"/>
-</kw>
-<kw name="Criar sessão" owner="Api_carrinho">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-03-14T00:10:05.636296" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>${alias}</arg>
-<arg>${url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-03-14T00:10:05.636296" elapsed="0.000000"/>
-</kw>
-<arg>dummyjson</arg>
-<arg>${BASE_URL}</arg>
-<status status="PASS" start="2025-03-14T00:10:05.635298" elapsed="0.000998"/>
-</kw>
-<kw name="Adicionar itens ao carrinho" owner="Api_carrinho">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-03-14T00:10:05.638318" level="INFO">&amp;{payload} = { userId=1 | products=id=144 quantity=4 id=98 quantity=1 }</msg>
-<var>&amp;{payload}</var>
-<arg>userId=${user_id}</arg>
-<arg>products=${produtos}</arg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-03-14T00:10:05.638318" elapsed="0.000996"/>
+<status status="NOT RUN" start="2025-03-14T02:17:09.395104" elapsed="0.001002"/>
 </kw>
-<kw name="Post Request" owner="RequestsLibrary">
-<msg time="2025-03-14T00:10:05.639314" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg time="2025-03-14T00:10:05.641310" level="FAIL">ValueError: not enough values to unpack (expected 2, got 1)</msg>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${body}</var>
+<arg>merge=${True}</arg>
+<arg>products=${products}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-03-14T02:17:09.397126" elapsed="0.000000"/>
+</kw>
+<kw name="PUT On Session">
 <var>${response}</var>
-<arg>dummyjson</arg>
-<arg>/carts/add</arg>
-<arg>json=${payload}</arg>
-<arg>headers={'Content-Type': 'application/json'}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<status status="FAIL" start="2025-03-14T00:10:05.639314" elapsed="0.049994">ValueError: not enough values to unpack (expected 2, got 1)</status>
+<arg>carrinho</arg>
+<arg>/</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<status status="NOT RUN" start="2025-03-14T02:17:09.398122" elapsed="0.000000"/>
 </kw>
-<return>
-<value>${response}</value>
-<status status="NOT RUN" start="2025-03-14T00:10:05.690305" elapsed="0.000000"/>
-</return>
-<var>${response}</var>
-<arg>${USER_ID}</arg>
-<arg>${PRODUCTS}</arg>
-<status status="FAIL" start="2025-03-14T00:10:05.637297" elapsed="0.053008">ValueError: not enough values to unpack (expected 2, got 1)</status>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-03-14T02:17:09.399108" elapsed="0.000000"/>
 </kw>
-<kw name="Verificar resposta" owner="Api_carrinho">
-<arg>${response}</arg>
-<status status="NOT RUN" start="2025-03-14T00:10:05.691305" elapsed="0.000000"/>
+<kw name="Log" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-14T02:17:09.401108" elapsed="0.000000"/>
 </kw>
-<kw name="Take Screenshot" owner="Browser" type="TEARDOWN">
-<msg time="2025-03-14T00:10:05.912159" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
-<tag>PageContent</tag>
-<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
-<status status="PASS" start="2025-03-14T00:10:05.693310" elapsed="0.218849"/>
-</kw>
-<status status="FAIL" start="2025-03-14T00:09:58.062701" elapsed="7.850449">ValueError: not enough values to unpack (expected 2, got 1)</status>
+<status status="FAIL" start="2025-03-14T02:17:09.390117" elapsed="0.011991">No keyword with name 'Create Session' found.</status>
 </test>
-<doc>Testes de adiciona itens ao carrinho para um usuário especifico</doc>
-<status status="FAIL" start="2025-03-14T00:09:47.748860" elapsed="18.351314"/>
+<doc>Este teste atualiza a quantidade de um item no carrinho utilizando uma requisição HTTP PUT</doc>
+<status status="FAIL" start="2025-03-14T02:17:09.203449" elapsed="0.201670"/>
 </suite>
 <statistics>
 <total>
@@ -87,11 +52,98 @@
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Adicionar Item Carrinho">Adicionar Item Carrinho</stat>
+<stat name="Atualizar Carrinho" id="s1" pass="0" fail="1" skip="0">Atualizar Carrinho</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-03-14T00:09:49.139428" level="WARN">Error in file 'C:\Desafio coco bambu\resources\pages\Api_carrinho.resource' on line 25: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
-<msg time="2025-03-14T00:10:05.639314" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2025-03-14T02:17:09.276453" level="ERROR">Error in file 'C:\Desafio coco bambu\tests\atualizar_carrinho.robot' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.287076" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\Base.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.299614" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Welcome.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.313185" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.323936" level="WARN">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-03-14T02:17:09.331484" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.338477" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 5: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.370478" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Atualizar_carrinho.resource' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
+<msg time="2025-03-14T02:17:09.383515" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Remover_carrinho.resource' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Desafio coco bambu\.venv\Scripts\robot.exe
+  C:\Python312\python312.zip
+  C:\Python312\DLLs
+  C:\Python312\Lib
+  C:\Python312
+  c:\Desafio coco bambu\.venv
+  c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
 </errors>
 </robot>
