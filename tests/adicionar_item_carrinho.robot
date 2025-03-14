@@ -12,7 +12,7 @@ Test Teardown        Take Screenshot
 *** Test Cases ***
 Adicionar itens ao carrinho
     Criar sessão     dummyjson     ${BASE_URL}
-    ${response}      Adicionar itens ao carrinho    ${USER_ID}    ${PRODUCTS}
+    ${response}      Adicionar itens ao carrinho      ${USER_ID}    ${PRODUCTS}
     Verificar resposta    ${response}
 
 

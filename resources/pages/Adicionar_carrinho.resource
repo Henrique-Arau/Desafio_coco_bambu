@@ -3,13 +3,14 @@ Documentation            Garantir a funcionalidade das APIs do carrinho
 
 Library                  Browser
 Library                  RequestsLibrary
+Library                  Collections
 
 *** Variables ***
 ${BASE_URL}      https://dummyjson.com
 ${USER_ID}       1
-${PRODUCT_1}     id=144    quantity=4
-${PRODUCT_2}     id=98     quantity=1
-${PRODUCTS}      ${PRODUCT_1}    ${PRODUCT_2}
+${PRODUCT_1}     id=144        quantity=1
+${PRODUCT_2}     id=98         quantity=4
+${PRODUCTS}      ${PRODUCT_1}        ${PRODUCT_2}
 
 
 *** Keywords ***
@@ -21,10 +22,10 @@ Criar sessão
 Adicionar itens ao carrinho
     [Arguments]    ${user_id}           ${produtos}
     &{payload}     Create Dictionary    userId=${user_id}    products=${produtos}
-    ${response}    POST On Session     dummyjson     /carts/add    json=${payload}    headers={'Content-Type': 'application/json'}
+    ${response}    POST On Session      dummyjson  /carts/add    json=${payload}    headers={'Content-Type': 'application/json'}
     [Return]       ${response}
 
 Verificar resposta
     [Arguments]         ${response}
-    Status Should Be    ${response}    200
-    Log    ${response.json()}    console=true
+    Status Should Be    ${response}     200
+    Log     ${response.json()}    console=true

@@ -14,4 +14,3 @@ Test Teardown        Take Screenshot
 Validar erro ao preencher forma de pagamento
 
      Go to voucher page
-     Verify welcome message

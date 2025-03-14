@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation        Ações e elementos da pagina de boas vindas
+Documentation        Ações e elementos da pagina de adicionar cartão
 
 Library        Browser
 
