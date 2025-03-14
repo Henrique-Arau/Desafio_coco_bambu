@@ -9,11 +9,10 @@ Resource             ../resources/Base.resource
 Test Setup           start session
 Test Teardown        Take Screenshot
 
-
 *** Test Cases ***
-    
-    Criar sessão    dummyjson    ${https://dummyjson.com/carts/add}
-    ${response}     Adicionar itens ao carrinho    ${USER_ID}    ${PRODUCTS}
+Adicionar itens ao carrinho
+    Criar sessão     dummyjson     ${BASE_URL}
+    ${response}      Adicionar itens ao carrinho    ${USER_ID}    ${PRODUCTS}
     Verificar resposta    ${response}
 
 
