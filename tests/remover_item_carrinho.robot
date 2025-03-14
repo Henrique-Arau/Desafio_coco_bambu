@@ -4,6 +4,8 @@ Documentation        Este teste remove um item do carrinho utilizando uma requis
 Resource             ../resources/Base.resource
 Library               Browser
 
+Library              RequestsLibrary
+
 *** Test Cases ***
 
 Remover Item do Carrinho
