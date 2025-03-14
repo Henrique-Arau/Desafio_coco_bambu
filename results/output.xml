@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-14T17:10:59.224248" rpa="false" schemaversion="5">
+<suite id="s1" name="Desafio coco bambu" source="C:\Desafio coco bambu">
+<suite id="s1-s1" name="Tests" source="C:\Desafio coco bambu\tests">
+<suite id="s1-s1-s1" name="Adicionar Item Carrinho" source="C:\Desafio coco bambu\tests\adicionar_item_carrinho.robot">
+<test id="s1-s1-s1-t1" name="Adicionar itens ao carrinho" line="10">
+<kw name="Criar sessão" owner="Adicionar_carrinho">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-03-14T17:11:00.403470" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>dummyjson</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-03-14T17:11:00.402470" elapsed="0.001994"/>
+</kw>
+<status status="PASS" start="2025-03-14T17:11:00.401469" elapsed="0.002995"/>
+</kw>
+<kw name="Enviar Requisição POST" owner="Adicionar_carrinho">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-14T17:11:00.406467" level="INFO">${PRODUCT} = {'id': '1', 'quantity': '2'}</msg>
+<var>${PRODUCT}</var>
+<arg>id=1</arg>
+<arg>quantity=2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-14T17:11:00.405463" elapsed="0.002001"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-03-14T17:11:00.408465" level="INFO">${PRODUCTS} = [{'id': '1', 'quantity': '2'}]</msg>
+<var>${PRODUCTS}</var>
+<arg>${PRODUCT}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-03-14T17:11:00.407464" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-14T17:11:00.409466" level="INFO">${BODY} = {'userId': '1', 'products': [{'id': '1', 'quantity': '2'}]}</msg>
+<var>${BODY}</var>
+<arg>userId=1</arg>
+<arg>products=${PRODUCTS}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-14T17:11:00.408465" elapsed="0.001999"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-03-14T17:11:01.016618" level="INFO">POST Request : url=https://dummyjson.com/carts/add 
+ path_url=/carts/add 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '59'} 
+ body=b'{"userId": "1", "products": [{"id": "1", "quantity": "2"}]}' 
+ </msg>
+<msg time="2025-03-14T17:11:01.016618" level="INFO">POST Response : url=https://dummyjson.com/carts/add 
+ status=201, reason=Created 
+ headers={'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1741983061&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=K7VAPzr6EqlAVzQpJt%2BPSdy2SgqCytWY346PCJaRntc%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1741983061&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=K7VAPzr6EqlAVzQpJt%2BPSdy2SgqCytWY346PCJaRntc%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Dns-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-Xss-Protection': '1; mode=block', 'X-Powered-By': 'Cats on Keyboards', 'Server': 'BobTheBuilder', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '99', 'Date': 'Fri, 14 Mar 2025 20:11:01 GMT', 'X-Ratelimit-Reset': '1741983069', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '353', 'Etag': 'W/"161-Vt4SOB+IL32QAJQmwofBKg7iwEg"', 'Vary': 'Accept-Encoding', 'Via': '1.1 vegur'} 
+ body={"id":51,"products":[{"id":1,"title":"Essence Mascara Lash Princess","price":9.99,"quantity":2,"total":19.98,"discountPercentage":7.17,"discountedPrice":19,"thumbnail":"https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"}],"total":19.98,"discountedTotal":19,"userId":1,"totalProducts":1,"totalQuantity":2} 
+ </msg>
+<msg time="2025-03-14T17:11:01.017618" level="INFO">C:\Desafio coco bambu\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dummyjson.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-03-14T17:11:01.017618" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>dummyjson</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=&amp;{HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-03-14T17:11:00.410464" elapsed="0.608160"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-14T17:11:01.020622" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-14T17:11:01.019620" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2025-03-14T17:11:00.405463" elapsed="0.615159"/>
+</kw>
+<kw name="Verificar Resposta" owner="Adicionar_carrinho">
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-03-14T17:11:01.022625" elapsed="0.001002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-14T17:11:01.024623" level="INFO">{'id': 51, 'products': [{'id': 1, 'title': 'Essence Mascara Lash Princess', 'price': 9.99, 'quantity': 2, 'total': 19.98, 'discountPercentage': 7.17, 'discountedPrice': 19, 'thumbnail': 'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png'}], 'total': 19.98, 'discountedTotal': 19, 'userId': 1, 'totalProducts': 1, 'totalQuantity': 2}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-14T17:11:01.023627" elapsed="0.000996"/>
+</kw>
+<status status="PASS" start="2025-03-14T17:11:01.021625" elapsed="0.003994"/>
+</kw>
+<msg time="2025-03-14T17:11:01.094598" level="INFO">Starting Browser process C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js using port 61784</msg>
+<msg time="2025-03-14T17:11:01.094598" level="INFO">Node startup parameters: ['node', 'C:\\Desafio coco bambu\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '61784']</msg>
+<status status="PASS" start="2025-03-14T17:11:00.399451" elapsed="0.626168"/>
+</test>
+<doc>Testes de adiciona itens ao carrinho para um usuário especifico</doc>
+<status status="PASS" start="2025-03-14T17:10:59.272603" elapsed="10.224890"/>
+</suite>
+<status status="PASS" start="2025-03-14T17:10:59.267598" elapsed="10.280472"/>
+</suite>
+<status status="PASS" start="2025-03-14T17:10:59.235258" elapsed="10.314788"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Desafio coco bambu" id="s1" pass="1" fail="0" skip="0">Desafio coco bambu</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests</stat>
+<stat name="Adicionar Item Carrinho" id="s1-s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests.Adicionar Item Carrinho</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

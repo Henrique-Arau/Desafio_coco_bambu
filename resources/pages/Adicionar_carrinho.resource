@@ -1,31 +1,59 @@
 *** Settings ***
 Documentation            Garantir a funcionalidade das APIs do adicionar item do carrinho
 
-Library                  Browser
 Library                  RequestsLibrary
-Library                  Collections
 
 *** Variables ***
 ${BASE_URL}      https://dummyjson.com
-${USER_ID}       1
-${PRODUCT_1}     id=144        quantity=1
-${PRODUCT_2}     id=98         quantity=4
-${PRODUCTS}      ${PRODUCT_1}        ${PRODUCT_2}
-
+${ENDPOINT}      /carts/add 
+&{HEADERS}       Content-Type=application/json
 
 *** Keywords ***
 
 Criar sessão
-    [Arguments]           ${alias}    ${url}
-    Create Session        ${alias}    ${url}
 
-Adicionar itens ao carrinho
-    [Arguments]    ${user_id}           ${produtos}
-    &{payload}     Create Dictionary    userId=${user_id}    products=${produtos}
-    ${response}    POST On Session      dummyjson  /carts/add    json=${payload}    headers={'Content-Type': 'application/json'}
-    [Return]       ${response}
+    Create Session        dummyjson     ${BASE_URL}
 
-Verificar resposta
-    [Arguments]         ${response}
-    Status Should Be    ${response}     200
-    Log     ${response.json()}    console=true
+Enviar Requisição POST
+    ${PRODUCT}      Create Dictionary      id=1    quantity=2
+    ${PRODUCTS}     Create List            ${PRODUCT}
+    ${BODY}         Create Dictionary      userId=1      products=${PRODUCTS}
+    ${RESPONSE}     POST On Session        dummyjson   ${ENDPOINT}      json=${BODY}     headers=&{HEADERS}
+    Set Suite Variable  ${response}
+
+Verificar Resposta
+    Status should Be    201
+    Log     ${response.json()}
+
+Adicionar Carrinho Sem userId
+    [Documentation]    Teste para verificar erro ao não enviar userId
+    Create Session    dummyjson    ${BASE_URL}
+
+    ${PRODUCT}    Create Dictionary    id=1    quantity=2
+    ${PRODUCTS}    Create List    ${PRODUCT}
+    ${BODY}    Create Dictionary    products=${PRODUCTS}
+
+    ${RESPONSE}    POST On Session    dummyjson    ${ENDPOINT}    json=${BODY}    headers=&{HEADERS}
+    Should Be Equal As Numbers    ${RESPONSE.status_code}    400
+
+Adicionar Produto Com Quantidade Zero
+    [Documentation]    Teste para validar que quantidade zero não é aceita
+    Create Session    dummyjson    ${BASE_URL}
+
+    ${PRODUCT}    Create Dictionary    id=1    quantity=0
+    ${PRODUCTS}    Create List    ${PRODUCT}
+    ${BODY}    Create Dictionary    userId=1    products=${PRODUCTS}
+
+    ${RESPONSE}    POST On Session    dummyjson    ${ENDPOINT}    json=${BODY}    headers=&{HEADERS}
+    Should Be Equal As Numbers    ${RESPONSE.status_code}    400
+
+Adicionar Produto Inexistente
+    [Documentation]    Teste para validar que um produto inválido não pode ser adicionado
+    Create Session    dummyjson    ${BASE_URL}
+
+    ${PRODUCT}    Create Dictionary    id=99999    quantity=2
+    ${PRODUCTS}    Create List    ${PRODUCT}
+    ${BODY}    Create Dictionary    userId=1    products=${PRODUCTS}
+
+    ${RESPONSE}    POST On Session    dummyjson    ${ENDPOINT}    json=${BODY}    headers=&{HEADERS}
+    Should Be Equal As Numbers    ${RESPONSE.status_code}    400

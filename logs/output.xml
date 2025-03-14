@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-14T02:17:09.198928" rpa="false" schemaversion="5">
-<suite id="s1" name="Atualizar Carrinho" source="C:\Desafio coco bambu\tests\atualizar_carrinho.robot">
-<test id="s1-t1" name="Atualizar Item no Carrinho" line="11">
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-14T09:43:41.312223" rpa="false" schemaversion="5">
+<suite id="s1" name="Remover Item Carrinho" source="C:\Desafio coco bambu\tests\remover_item_carrinho.robot">
+<test id="s1-t1" name="Remover Item do Carrinho" line="10">
 <kw name="Create Session">
-<msg time="2025-03-14T02:17:09.394097" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<arg>carrinho</arg>
-<arg>${URL_BASE}</arg>
-<status status="FAIL" start="2025-03-14T02:17:09.393116" elapsed="0.000981">No keyword with name 'Create Session' found.</status>
+<msg time="2025-03-14T09:43:41.419202" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<arg>dummyjson</arg>
+<arg>${BASE_URL}</arg>
+<status status="FAIL" start="2025-03-14T09:43:41.418206" elapsed="0.000996">No keyword with name 'Create Session' found.</status>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" start="2025-03-14T02:17:09.395104" elapsed="0.001002"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<var>${body}</var>
-<arg>merge=${True}</arg>
-<arg>products=${products}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="NOT RUN" start="2025-03-14T02:17:09.397126" elapsed="0.000000"/>
-</kw>
-<kw name="PUT On Session">
+<kw name="DELETE">
 <var>${response}</var>
-<arg>carrinho</arg>
-<arg>/</arg>
-<arg>headers=${headers}</arg>
-<arg>json=${body}</arg>
-<status status="NOT RUN" start="2025-03-14T02:17:09.398122" elapsed="0.000000"/>
+<arg>/carts/${CART_ID}</arg>
+<status status="NOT RUN" start="2025-03-14T09:43:41.419202" elapsed="0.000999"/>
 </kw>
-<kw name="Should Be Equal As Numbers" owner="BuiltIn">
-<arg>${response.status_code}</arg>
+<kw name="Status Should Be">
 <arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="NOT RUN" start="2025-03-14T02:17:09.399108" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-03-14T09:43:41.420323" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${response.json()}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-03-14T02:17:09.401108" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-03-14T09:43:41.420323" elapsed="0.000000"/>
 </kw>
-<status status="FAIL" start="2025-03-14T02:17:09.390117" elapsed="0.011991">No keyword with name 'Create Session' found.</status>
+<status status="FAIL" start="2025-03-14T09:43:41.415204" elapsed="0.005119">No keyword with name 'Create Session' found.</status>
 </test>
-<doc>Este teste atualiza a quantidade de um item no carrinho utilizando uma requisição HTTP PUT</doc>
-<status status="FAIL" start="2025-03-14T02:17:09.203449" elapsed="0.201670"/>
+<doc>Este teste remove um item do carrinho utilizando uma requisição HTTP DELETE</doc>
+<status status="FAIL" start="2025-03-14T09:43:41.314224" elapsed="0.108122"/>
 </suite>
 <statistics>
 <total>
@@ -52,11 +34,11 @@
 <tag>
 </tag>
 <suite>
-<stat name="Atualizar Carrinho" id="s1" pass="0" fail="1" skip="0">Atualizar Carrinho</stat>
+<stat name="Remover Item Carrinho" id="s1" pass="0" fail="1" skip="0">Remover Item Carrinho</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-03-14T02:17:09.276453" level="ERROR">Error in file 'C:\Desafio coco bambu\tests\atualizar_carrinho.robot' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+<msg time="2025-03-14T09:43:41.350221" level="ERROR">Error in file 'C:\Desafio coco bambu\tests\remover_item_carrinho.robot' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -67,7 +49,7 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.287076" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\Base.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+<msg time="2025-03-14T09:43:41.354056" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\Base.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -78,7 +60,7 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.299614" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Welcome.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+<msg time="2025-03-14T09:43:41.359645" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Welcome.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -89,7 +71,7 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.313185" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+<msg time="2025-03-14T09:43:41.366647" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -100,8 +82,8 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.323936" level="WARN">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
-<msg time="2025-03-14T02:17:09.331484" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
+<msg time="2025-03-14T09:43:41.372646" level="WARN">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-03-14T09:43:41.378649" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 4: Importing library 'Browser' failed: ModuleNotFoundError: No module named 'Browser'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -112,7 +94,7 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.338477" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 5: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+<msg time="2025-03-14T09:43:41.383673" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Adicionar_carrinho.resource' on line 5: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -123,7 +105,7 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.370478" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Atualizar_carrinho.resource' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+<msg time="2025-03-14T09:43:41.403205" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Atualizar_carrinho.resource' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
 Traceback (most recent call last):
   None
 PYTHONPATH:
@@ -134,7 +116,7 @@ PYTHONPATH:
   C:\Python312
   c:\Desafio coco bambu\.venv
   c:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T02:17:09.383515" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Remover_carrinho.resource' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+<msg time="2025-03-14T09:43:41.410203" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Remover_carrinho.resource' on line 4: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
 Traceback (most recent call last):
   None
 PYTHONPATH:

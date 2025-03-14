@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation         Este teste atualiza a quantidade de um item no carrinho utilizando uma requisição HTTP PUT 
 
-Library        RequestsLibrary
+Library              RequestsLibrary
 
 Resource             ../resources/Base.resource
 

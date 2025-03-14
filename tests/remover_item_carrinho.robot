@@ -1,15 +1,16 @@
 *** Settings ***
 Documentation        Este teste remove um item do carrinho utilizando uma requisição HTTP DELETE 
 
-Library              RequestsLibrary
 Resource             ../resources/Base.resource
-
+Library               Browser
 
 *** Test Cases ***
 
 Remover Item do Carrinho
+    Remover Item do Carrinho
 
-    Create Session    dummyjson    ${BASE_URL}
-    ${response}  DELETE   /carts/${CART_ID}
-    Status Should Be    200
-    Log    ${response.json()}
+verificar erro ao remover um carrinho inexistente
+    Remover Carrinho Inexistente
+
+Remover um carrinho sem fornecer ID
+    Remover Carrinho Sem ID
