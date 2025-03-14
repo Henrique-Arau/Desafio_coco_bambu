@@ -2,7 +2,7 @@
 Documentation            Garantir a funcionalidade das APIs do carrinho
 
 Library                  Browser
-Library    RequestsLibrary
+Library                  RequestsLibrary
 
 *** Variables ***
 ${BASE_URL}      https://dummyjson.com
@@ -21,7 +21,7 @@ Criar sessão
 Adicionar itens ao carrinho
     [Arguments]    ${user_id}           ${produtos}
     &{payload}     Create Dictionary    userId=${user_id}    products=${produtos}
-    ${response}    Post Request    dummyjson    /carts/add    json=${payload}    headers={'Content-Type': 'application/json'}
+    ${response}    POST On Session     dummyjson     /carts/add    json=${payload}    headers={'Content-Type': 'application/json'}
     [Return]       ${response}
 
 Verificar resposta
