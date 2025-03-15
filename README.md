@@ -1,3 +1,9 @@
+## Faker Library ...
+
+Ela gera nomes, e-mails, senhas, endereços, etc, tudo fake e aleatório a cada execução.
+ - pip install robotframework-faker
+
+
 ## pip install robotframework-browser:
 
 Este comando instala o robotframework-browser, que é uma biblioteca para o Robot Framework que permite a automação de testes em navegadores da web. O pip é o gerenciador de pacotes do Python.
