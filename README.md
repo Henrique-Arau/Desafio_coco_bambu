@@ -1,3 +1,6 @@
+## Selenium Library
+pip install --upgrade robotframework-seleniumlibrary - A principal dependência do Robot Framework é a SeleniumLibrary, que é uma biblioteca de testes web que utiliza a ferramenta Selenium internamente. Para usar a SeleniumLibrary, você também precisará ter Python instalado.
+
 ## Faker Library ...
 
 Ela gera nomes, e-mails, senhas, endereços, etc, tudo fake e aleatório a cada execução.
