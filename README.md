@@ -1,4 +1,4 @@
-pip install robotframework-browser:
+##pip install robotframework-browser:
 
 Este comando instala o robotframework-browser, que é uma biblioteca para o Robot Framework que permite a automação de testes em navegadores da web. O pip é o gerenciador de pacotes do Python.
 cd venv\Lib\site-packages\Browser\wrapper:
