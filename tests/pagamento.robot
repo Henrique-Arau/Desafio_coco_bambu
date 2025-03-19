@@ -13,7 +13,7 @@ Compra de voucher
     # E selecionar o Estado desejado
 
     Então o usuário será direcionado para a tela de opções de Vouchers
-    E irá selecionar o voucher de Campanha de Testes para a região do Lago Sul
+    E irá selecionar o voucher de Campanha de Testes para a região de Goiania
 
     Quando o usuário visualizar a página e ler as Regras
     Então retornará para a aba de Detalhes e irá fazer o cadastro

@@ -1,148 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-14T18:18:03.222694" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-19T00:26:44.895700" rpa="false" schemaversion="5">
 <suite id="s1" name="Desafio coco bambu" source="C:\Desafio coco bambu">
 <suite id="s1-s1" name="Tests" source="C:\Desafio coco bambu\tests">
-<suite id="s1-s1-s1" name="Pagamento" source="C:\Desafio coco bambu\tests\pagamento.robot">
-<test id="s1-s1-s1-t1" name="Compra de voucher" line="10">
-<kw name="Dado que o site do Coco Bambu seja acessado" owner="Pagamento">
-<kw name="Open Browser" owner="Browser">
-<msg time="2025-03-14T18:18:04.155671" level="FAIL">ValueError: Argument 'browser' got value 'chrome' that cannot be converted to SupportedBrowsers: SupportedBrowsers does not have member 'chrome'. Available: 'chromium', 'firefox' and 'webkit'</msg>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
-<status status="FAIL" start="2025-03-14T18:18:04.153681" elapsed="0.005003">ValueError: Argument 'browser' got value 'chrome' that cannot be converted to SupportedBrowsers: SupportedBrowsers does not have member 'chrome'. Available: 'chromium', 'firefox' and 'webkit'</status>
+<suite id="s1-s1-s1" name="Adicionar Item Carrinho" source="C:\Desafio coco bambu\tests\adicionar_item_carrinho.robot">
+<test id="s1-s1-s1-t1" name="Adicionar produto invalido" line="18">
+<kw name="Adicionar Produto Inexistente" owner="Adicionar_carrinho">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-03-19T00:26:47.008095" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>dummyjson</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-03-19T00:26:47.007091" elapsed="0.002251"/>
 </kw>
-<kw name="Maximize Browser Window">
-<status status="NOT RUN" start="2025-03-14T18:18:04.159675" elapsed="0.004007"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-19T00:26:47.011610" level="INFO">${PRODUCT} = {'id': 'dfgfdg~~', 'quantity': '2'}</msg>
+<var>${PRODUCT}</var>
+<arg>id=dfgfdg~~</arg>
+<arg>quantity=2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.010090" elapsed="0.001520"/>
 </kw>
-<kw name="Set Browser Implicit Wait">
-<arg>10</arg>
-<status status="NOT RUN" start="2025-03-14T18:18:04.165672" elapsed="0.003000"/>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-03-19T00:26:47.012629" level="INFO">${PRODUCTS} = [{'id': 'dfgfdg~~', 'quantity': '2'}]</msg>
+<var>${PRODUCTS}</var>
+<arg>${PRODUCT}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.012124" elapsed="0.001515"/>
 </kw>
-<status status="FAIL" start="2025-03-14T18:18:04.150689" elapsed="0.019986">ValueError: Argument 'browser' got value 'chrome' that cannot be converted to SupportedBrowsers: SupportedBrowsers does not have member 'chrome'. Available: 'chromium', 'firefox' and 'webkit'</status>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-19T00:26:47.014710" level="INFO">${BODY} = {'userId': '1', 'products': [{'id': 'dfgfdg~~', 'quantity': '2'}]}</msg>
+<var>${BODY}</var>
+<arg>userId=1</arg>
+<arg>products=${PRODUCTS}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.013639" elapsed="0.002065"/>
 </kw>
-<kw name="Quando o usuário selecionar a aba de Vouchers" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.171678" elapsed="0.001009"/>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-03-19T00:26:47.528978" level="INFO">POST Request : url=https://dummyjson.com/carts/add 
+ path_url=/carts/add 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
+ body=b'{"userId": "1", "products": [{"id": "dfgfdg~~", "quantity": "2"}]}' 
+ </msg>
+<msg time="2025-03-19T00:26:47.528978" level="INFO">POST Response : url=https://dummyjson.com/carts/add 
+ status=201, reason=Created 
+ headers={'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1742354810&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=cFY3UmPQvWmj4nmSWe3QhFIB9PReo%2FVpmdTFVp0ArMU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1742354810&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=cFY3UmPQvWmj4nmSWe3QhFIB9PReo%2FVpmdTFVp0ArMU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Dns-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-Xss-Protection': '1; mode=block', 'X-Powered-By': 'Cats on Keyboards', 'Server': 'BobTheBuilder', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '98', 'Date': 'Wed, 19 Mar 2025 03:26:50 GMT', 'X-Ratelimit-Reset': '1742354818', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '100', 'Etag': 'W/"64-+vcYltUjWYO/Kl15o+GT6G40gqk"', 'Vary': 'Accept-Encoding', 'Via': '1.1 vegur'} 
+ body={"id":51,"products":[],"total":0,"discountedTotal":0,"userId":1,"totalProducts":0,"totalQuantity":0} 
+ </msg>
+<msg time="2025-03-19T00:26:47.529985" level="INFO">C:\Desafio coco bambu\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dummyjson.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-03-19T00:26:47.531994" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>dummyjson</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=&amp;{HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.016701" elapsed="0.515293"/>
 </kw>
-<kw name="Então o usuário será direcionado para a tela de opções de Vouchers" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.172687" elapsed="0.000987"/>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-19T00:26:47.534994" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.532999" elapsed="0.002676"/>
 </kw>
-<kw name="E irá selecionar o voucher de Campanha de Testes para a região do Lago Sul" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.173674" elapsed="0.000000"/>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.536250" elapsed="0.001046"/>
 </kw>
-<kw name="Quando o usuário visualizar a página e ler as Regras" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.174672" elapsed="0.000000"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-19T00:26:47.539537" level="INFO">{'id': 51, 'products': [], 'total': 0, 'discountedTotal': 0, 'userId': 1, 'totalProducts': 0, 'totalQuantity': 0}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-19T00:26:47.537851" elapsed="0.002221"/>
 </kw>
-<kw name="Então retornará para a aba de Detalhes e irá fazer o cadastro" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.175682" elapsed="0.001000"/>
+<doc>Teste para validar que um produto inválido não pode ser adicionado</doc>
+<status status="PASS" start="2025-03-19T00:26:47.005092" elapsed="0.535575"/>
 </kw>
-<kw name="E irá válidar a autenticação" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.176682" elapsed="0.000995"/>
-</kw>
-<kw name="Então irá selecionar a forma de pagamento" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.177677" elapsed="0.000998"/>
-</kw>
-<kw name="E irá preencher os dados complementares" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.178675" elapsed="0.000997"/>
-</kw>
-<kw name="E selecionar a quantidade de Créditos" owner="Pagamento">
-<status status="NOT RUN" start="2025-03-14T18:18:04.179672" elapsed="0.000000"/>
-</kw>
-<msg time="2025-03-14T18:18:04.226990" level="INFO">Starting Browser process C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js using port 62640</msg>
-<msg time="2025-03-14T18:18:04.228086" level="INFO">Node startup parameters: ['node', 'C:\\Desafio coco bambu\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '62640']</msg>
-<status status="FAIL" start="2025-03-14T18:18:04.147688" elapsed="0.032984">ValueError: Argument 'browser' got value 'chrome' that cannot be converted to SupportedBrowsers: SupportedBrowsers does not have member 'chrome'. Available: 'chromium', 'firefox' and 'webkit'</status>
+<msg time="2025-03-19T00:26:47.590354" level="INFO">Starting Browser process C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js using port 51141</msg>
+<msg time="2025-03-19T00:26:47.590961" level="INFO">Node startup parameters: ['node', 'C:\\Desafio coco bambu\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '51141']</msg>
+<status status="PASS" start="2025-03-19T00:26:47.002120" elapsed="0.539684"/>
 </test>
-<status status="FAIL" start="2025-03-14T18:18:03.274687" elapsed="2.762131"/>
+<doc>Testes de adiciona itens ao carrinho para um usuário especifico</doc>
+<status status="PASS" start="2025-03-19T00:26:44.959216" elapsed="4.283737"/>
 </suite>
-<status status="FAIL" start="2025-03-14T18:18:03.269683" elapsed="2.812134"/>
+<status status="PASS" start="2025-03-19T00:26:44.954222" elapsed="4.357304"/>
 </suite>
-<status status="FAIL" start="2025-03-14T18:18:03.234764" elapsed="2.849054"/>
+<status status="PASS" start="2025-03-19T00:26:44.909706" elapsed="4.404827"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Desafio coco bambu" id="s1" pass="0" fail="1" skip="0">Desafio coco bambu</stat>
-<stat name="Tests" id="s1-s1" pass="0" fail="1" skip="0">Desafio coco bambu.Tests</stat>
-<stat name="Pagamento" id="s1-s1-s1" pass="0" fail="1" skip="0">Desafio coco bambu.Tests.Pagamento</stat>
+<stat name="Desafio coco bambu" id="s1" pass="1" fail="0" skip="0">Desafio coco bambu</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests</stat>
+<stat name="Adicionar Item Carrinho" id="s1-s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests.Adicionar Item Carrinho</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-03-14T18:18:03.280672" level="ERROR">Error in file 'C:\Desafio coco bambu\tests\pagamento.robot' on line 4: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  C:\Desafio coco bambu\lib
-  C:\Desafio coco bambu\resources
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\libs
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\tool\robotcode
-  C:\Python312\python312.zip
-  C:\Python312\DLLs
-  C:\Python312\Lib
-  C:\Python312
-  C:\Desafio coco bambu\.venv
-  C:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T18:18:03.286680" level="ERROR">Error in file 'C:\Desafio coco bambu\tests\pagamento.robot' on line 5: Importing library 'FakerLibrary' failed: ModuleNotFoundError: No module named 'FakerLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  C:\Desafio coco bambu\lib
-  C:\Desafio coco bambu\resources
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\libs
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\tool\robotcode
-  C:\Python312\python312.zip
-  C:\Python312\DLLs
-  C:\Python312\Lib
-  C:\Python312
-  C:\Desafio coco bambu\.venv
-  C:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T18:18:03.563516" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 2: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  C:\Desafio coco bambu\lib
-  C:\Desafio coco bambu\resources
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\libs
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\tool\robotcode
-  C:\Python312\python312.zip
-  C:\Python312\DLLs
-  C:\Python312\Lib
-  C:\Python312
-  C:\Desafio coco bambu\.venv
-  C:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T18:18:03.571533" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 3: Importing library 'FakerLibrary' failed: ModuleNotFoundError: No module named 'FakerLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  C:\Desafio coco bambu\lib
-  C:\Desafio coco bambu\resources
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\libs
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\tool\robotcode
-  C:\Python312\python312.zip
-  C:\Python312\DLLs
-  C:\Python312\Lib
-  C:\Python312
-  C:\Desafio coco bambu\.venv
-  C:\Desafio coco bambu\.venv\Lib\site-packages</msg>
-<msg time="2025-03-14T18:18:03.575532" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 4: Resource file 'variables\mapa.robot' does not exist.</msg>
-<msg time="2025-03-14T18:18:04.140673" level="ERROR">Error in file 'C:\Desafio coco bambu\resources\pages\Variables\Variable.resource' on line 4: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  C:\Desafio coco bambu\lib
-  C:\Desafio coco bambu\resources
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\libs
-  c:\Users\penie\.vscode\extensions\d-biehl.robotcode-1.0.3\bundled\tool\robotcode
-  C:\Python312\python312.zip
-  C:\Python312\DLLs
-  C:\Python312\Lib
-  C:\Python312
-  C:\Desafio coco bambu\.venv
-  C:\Desafio coco bambu\.venv\Lib\site-packages</msg>
 </errors>
 </robot>

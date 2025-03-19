@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-19T00:26:42.544479" rpa="false" schemaversion="5">
+<suite id="s1" name="Adicionar Item Carrinho" source="c:\Desafio coco bambu\tests\adicionar_item_carrinho.robot">
+<test id="s1-t1" name="Adicionar produto invalido" line="18">
+<kw name="Adicionar Produto Inexistente" owner="Adicionar_carrinho">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-03-19T00:26:44.705080" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>dummyjson</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-03-19T00:26:44.704074" elapsed="0.003002"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-19T00:26:44.708073" level="INFO">${PRODUCT} = {'id': 'dfgfdg~~', 'quantity': '2'}</msg>
+<var>${PRODUCT}</var>
+<arg>id=dfgfdg~~</arg>
+<arg>quantity=2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-19T00:26:44.707076" elapsed="0.000997"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-03-19T00:26:44.710606" level="INFO">${PRODUCTS} = [{'id': 'dfgfdg~~', 'quantity': '2'}]</msg>
+<var>${PRODUCTS}</var>
+<arg>${PRODUCT}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-03-19T00:26:44.709584" elapsed="0.001022"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-19T00:26:44.712606" level="INFO">${BODY} = {'userId': '1', 'products': [{'id': 'dfgfdg~~', 'quantity': '2'}]}</msg>
+<var>${BODY}</var>
+<arg>userId=1</arg>
+<arg>products=${PRODUCTS}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-19T00:26:44.711608" elapsed="0.002520"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-03-19T00:26:45.302050" level="INFO">POST Request : url=https://dummyjson.com/carts/add 
+ path_url=/carts/add 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
+ body=b'{"userId": "1", "products": [{"id": "dfgfdg~~", "quantity": "2"}]}' 
+ </msg>
+<msg time="2025-03-19T00:26:45.303046" level="INFO">POST Response : url=https://dummyjson.com/carts/add 
+ status=201, reason=Created 
+ headers={'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1742354808&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=myhc2LsdO7Vbe9INZOfap2mhHkqJENSVFGQxpIbDRhI%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1742354808&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=myhc2LsdO7Vbe9INZOfap2mhHkqJENSVFGQxpIbDRhI%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Dns-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-Xss-Protection': '1; mode=block', 'X-Powered-By': 'Cats on Keyboards', 'Server': 'BobTheBuilder', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '99', 'Date': 'Wed, 19 Mar 2025 03:26:48 GMT', 'X-Ratelimit-Reset': '1742354818', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '100', 'Etag': 'W/"64-+vcYltUjWYO/Kl15o+GT6G40gqk"', 'Vary': 'Accept-Encoding', 'Via': '1.1 vegur'} 
+ body={"id":51,"products":[],"total":0,"discountedTotal":0,"userId":1,"totalProducts":0,"totalQuantity":0} 
+ </msg>
+<msg time="2025-03-19T00:26:45.303046" level="INFO">C:\Desafio coco bambu\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dummyjson.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-03-19T00:26:45.304047" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>dummyjson</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=&amp;{HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-03-19T00:26:44.715148" elapsed="0.589903"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-19T00:26:45.306058" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-19T00:26:45.305051" elapsed="0.002003"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-03-19T00:26:45.307054" elapsed="0.001003"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-19T00:26:45.310571" level="INFO">{'id': 51, 'products': [], 'total': 0, 'discountedTotal': 0, 'userId': 1, 'totalProducts': 0, 'totalQuantity': 0}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-19T00:26:45.309052" elapsed="0.002536"/>
+</kw>
+<doc>Teste para validar que um produto inválido não pode ser adicionado</doc>
+<status status="PASS" start="2025-03-19T00:26:44.700076" elapsed="0.611512"/>
+</kw>
+<msg time="2025-03-19T00:26:45.419699" level="INFO">Starting Browser process C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js using port 51135</msg>
+<msg time="2025-03-19T00:26:45.420699" level="INFO">Node startup parameters: ['node', 'C:\\Desafio coco bambu\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '51135']</msg>
+<status status="PASS" start="2025-03-19T00:26:44.697069" elapsed="0.615519"/>
+</test>
+<doc>Testes de adiciona itens ao carrinho para um usuário especifico</doc>
+<status status="PASS" start="2025-03-19T00:26:42.557631" elapsed="4.506765"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Adicionar Item Carrinho" id="s1" pass="1" fail="0" skip="0">Adicionar Item Carrinho</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-19T00:26:44.659070" level="ERROR">Error in file 'c:\Desafio coco bambu\resources\pages\Pagamento.resource' on line 5: Resource file 'Pages\Variables\Variable.resource' does not exist.</msg>
+</errors>
+</robot>

@@ -1,7 +1,8 @@
 *** Settings ***
 
-Library         SeleniumLibrary
-Library         FakerLibrary
+Library          SeleniumLibrary
+Library          FakerLibrary
+Resource         Pages/Variables/Variable.resource
 
 *** Keywords ***
 Dado que o site do Coco Bambu seja acessado

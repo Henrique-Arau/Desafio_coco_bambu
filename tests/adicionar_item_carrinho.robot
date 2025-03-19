@@ -12,9 +12,6 @@ Adicionar itens ao carrinho
     Enviar Requisição POST
     Verificar Resposta
 
-Adicionar carrinho sem enviar usuario id
-    Adicionar Carrinho Sem userId
-
 Quantidade de produto zero
     Adicionar Produto Com Quantidade Zero
 
