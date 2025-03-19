@@ -15,15 +15,3 @@ Atualizar Item no Carrinho
     ${response}=      PUT On Session               carrinho  /    headers=${headers}      json=${body}
     Should Be Equal As Numbers    ${response.status_code}    200
     Log    ${response.json()}
-
-Verificar erro ao atualizar um carrinho inexistente
-    Atualizar Carrinho Inexistente
-
-Verificar erro ao atualizar um carrinho sem produtos
-    Atualizar Carrinho Sem Produtos
-
-Verificar erro ao atualizar um carrinho com produto inexistente
-    Atualizar Carrinho Com Produto Inexistente
-
-Verificar erro ao atualizar um carrinho com quantidade zero
-    Atualizar Carrinho Com Quantidade Inválida

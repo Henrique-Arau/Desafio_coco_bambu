@@ -1,92 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-19T00:26:44.895700" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-03-19T00:36:10.084193" rpa="false" schemaversion="5">
 <suite id="s1" name="Desafio coco bambu" source="C:\Desafio coco bambu">
 <suite id="s1-s1" name="Tests" source="C:\Desafio coco bambu\tests">
-<suite id="s1-s1-s1" name="Adicionar Item Carrinho" source="C:\Desafio coco bambu\tests\adicionar_item_carrinho.robot">
-<test id="s1-s1-s1-t1" name="Adicionar produto invalido" line="18">
-<kw name="Adicionar Produto Inexistente" owner="Adicionar_carrinho">
+<suite id="s1-s1-s1" name="Remover Item Carrinho" source="C:\Desafio coco bambu\tests\remover_item_carrinho.robot">
+<test id="s1-s1-s1-t1" name="Remover Item do Carrinho" line="11">
+<kw name="Remover Item do Carrinho" owner="Remover_carrinho">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-03-19T00:26:47.008095" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-03-19T00:36:12.005781" level="INFO">Creating Session using : alias=dummyjson, url=https://dummyjson.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>dummyjson</arg>
 <arg>${BASE_URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-03-19T00:26:47.007091" elapsed="0.002251"/>
+<status status="PASS" start="2025-03-19T00:36:12.004782" elapsed="0.002006"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-03-19T00:26:47.011610" level="INFO">${PRODUCT} = {'id': 'dfgfdg~~', 'quantity': '2'}</msg>
-<var>${PRODUCT}</var>
-<arg>id=dfgfdg~~</arg>
-<arg>quantity=2</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.010090" elapsed="0.001520"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2025-03-19T00:26:47.012629" level="INFO">${PRODUCTS} = [{'id': 'dfgfdg~~', 'quantity': '2'}]</msg>
-<var>${PRODUCTS}</var>
-<arg>${PRODUCT}</arg>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.012124" elapsed="0.001515"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-03-19T00:26:47.014710" level="INFO">${BODY} = {'userId': '1', 'products': [{'id': 'dfgfdg~~', 'quantity': '2'}]}</msg>
-<var>${BODY}</var>
-<arg>userId=1</arg>
-<arg>products=${PRODUCTS}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.013639" elapsed="0.002065"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-03-19T00:26:47.528978" level="INFO">POST Request : url=https://dummyjson.com/carts/add 
- path_url=/carts/add 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '66'} 
- body=b'{"userId": "1", "products": [{"id": "dfgfdg~~", "quantity": "2"}]}' 
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2025-03-19T00:36:12.470293" level="INFO">DELETE Request : url=https://dummyjson.com/carts/1 
+ path_url=/carts/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
  </msg>
-<msg time="2025-03-19T00:26:47.528978" level="INFO">POST Response : url=https://dummyjson.com/carts/add 
- status=201, reason=Created 
- headers={'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1742354810&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=cFY3UmPQvWmj4nmSWe3QhFIB9PReo%2FVpmdTFVp0ArMU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1742354810&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=cFY3UmPQvWmj4nmSWe3QhFIB9PReo%2FVpmdTFVp0ArMU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Dns-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-Xss-Protection': '1; mode=block', 'X-Powered-By': 'Cats on Keyboards', 'Server': 'BobTheBuilder', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '98', 'Date': 'Wed, 19 Mar 2025 03:26:50 GMT', 'X-Ratelimit-Reset': '1742354818', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '100', 'Etag': 'W/"64-+vcYltUjWYO/Kl15o+GT6G40gqk"', 'Vary': 'Accept-Encoding', 'Via': '1.1 vegur'} 
- body={"id":51,"products":[],"total":0,"discountedTotal":0,"userId":1,"totalProducts":0,"totalQuantity":0} 
+<msg time="2025-03-19T00:36:12.471292" level="INFO">DELETE Response : url=https://dummyjson.com/carts/1 
+ status=200, reason=OK 
+ headers={'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1742355375&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=MvY%2BkTJnpnHwTk7bG8tOa%2BJsV7KhAAl%2BD%2BLERDNXYuc%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1742355375&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=MvY%2BkTJnpnHwTk7bG8tOa%2BJsV7KhAAl%2BD%2BLERDNXYuc%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Dns-Prefetch-Control': 'off', 'X-Frame-Options': 'SAMEORIGIN', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'X-Download-Options': 'noopen', 'X-Content-Type-Options': 'nosniff', 'X-Xss-Protection': '1; mode=block', 'X-Powered-By': 'Cats on Keyboards', 'Server': 'BobTheBuilder', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '99', 'Date': 'Wed, 19 Mar 2025 03:36:15 GMT', 'X-Ratelimit-Reset': '1742355381', 'Content-Type': 'application/json; charset=utf-8', 'Etag': 'W/"499-h8GYm45O+CPOEXp5TBNRmyhupPU"', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Transfer-Encoding': 'chunked', 'Via': '1.1 vegur'} 
+ body={"id":1,"products":[{"id":168,"title":"Charger SXT RWD","price":32999.99,"quantity":3,"total":98999.97,"discountPercentage":13.39,"discountedTotal":85743.87,"thumbnail":"https://cdn.dummyjson.com/products/images/vehicle/Charger%20SXT%20RWD/thumbnail.png"},{"id":78,"title":"Apple MacBook Pro 14 Inch Space Grey","price":1999.99,"quantity":2,"total":3999.98,"discountPercentage":18.52,"discountedTotal":3259.18,"thumbnail":"https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/thumbnail.png"},{"id":183,"title":"Green Oval Earring","price":24.99,"quantity":5,"total":124.94999999999999,"discountPercentage":6.28,"discountedTotal":117.1,"thumbnail":"https://cdn.dummyjson.com/products/images/womens-jewellery/Green%20Oval%20Earring/thumbnail.png"},{"id":100,"title":"Apple Airpods","price":129.99,"quantity":5,"total":649.95,"discountPercentage":12.84,"discountedTotal":566.5,"thumbnail":"https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/thumbnail.png"}],"total":103774.85,"discountedTotal":89686.65,"userId":33,"totalProducts":4,"totalQuantity":15,"isDeleted":true,"deletedOn":"2025-03-19T03:36:15.872Z"} 
  </msg>
-<msg time="2025-03-19T00:26:47.529985" level="INFO">C:\Desafio coco bambu\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dummyjson.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-03-19T00:26:47.531994" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
-<var>${RESPONSE}</var>
-<arg>dummyjson</arg>
-<arg>${ENDPOINT}</arg>
-<arg>json=${BODY}</arg>
-<arg>headers=&amp;{HEADERS}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.016701" elapsed="0.515293"/>
-</kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-03-19T00:26:47.534994" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<arg>${response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.532999" elapsed="0.002676"/>
+<msg time="2025-03-19T00:36:12.472293" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/carts/1</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="PASS" start="2025-03-19T00:36:12.007792" elapsed="0.465511"/>
 </kw>
 <kw name="Status Should Be" owner="RequestsLibrary">
-<arg>201</arg>
+<arg>200</arg>
+<arg>${response}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.536250" elapsed="0.001046"/>
+<status status="PASS" start="2025-03-19T00:36:12.473303" elapsed="0.001994"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-03-19T00:26:47.539537" level="INFO">{'id': 51, 'products': [], 'total': 0, 'discountedTotal': 0, 'userId': 1, 'totalProducts': 0, 'totalQuantity': 0}</msg>
+<msg time="2025-03-19T00:36:12.477303" level="INFO">{'id': 1, 'products': [{'id': 168, 'title': 'Charger SXT RWD', 'price': 32999.99, 'quantity': 3, 'total': 98999.97, 'discountPercentage': 13.39, 'discountedTotal': 85743.87, 'thumbnail': 'https://cdn.dummyjson.com/products/images/vehicle/Charger%20SXT%20RWD/thumbnail.png'}, {'id': 78, 'title': 'Apple MacBook Pro 14 Inch Space Grey', 'price': 1999.99, 'quantity': 2, 'total': 3999.98, 'discountPercentage': 18.52, 'discountedTotal': 3259.18, 'thumbnail': 'https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/thumbnail.png'}, {'id': 183, 'title': 'Green Oval Earring', 'price': 24.99, 'quantity': 5, 'total': 124.94999999999999, 'discountPercentage': 6.28, 'discountedTotal': 117.1, 'thumbnail': 'https://cdn.dummyjson.com/products/images/womens-jewellery/Green%20Oval%20Earring/thumbnail.png'}, {'id': 100, 'title': 'Apple Airpods', 'price': 129.99, 'quantity': 5, 'total': 649.95, 'discountPercentage': 12.84, 'discountedTotal': 566.5, 'thumbnail': 'https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/thumbnail.png'}], 'total': 103774.85, 'discountedTotal': 89686.65, 'userId': 33, 'totalProducts': 4, 'totalQuantity': 15, 'isDeleted': True, 'deletedOn': '2025-03-19T03:36:15.872Z'}</msg>
 <arg>${response.json()}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-03-19T00:26:47.537851" elapsed="0.002221"/>
+<status status="PASS" start="2025-03-19T00:36:12.475297" elapsed="0.003003"/>
 </kw>
-<doc>Teste para validar que um produto inválido não pode ser adicionado</doc>
-<status status="PASS" start="2025-03-19T00:26:47.005092" elapsed="0.535575"/>
+<status status="PASS" start="2025-03-19T00:36:12.001801" elapsed="0.476499"/>
 </kw>
-<msg time="2025-03-19T00:26:47.590354" level="INFO">Starting Browser process C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js using port 51141</msg>
-<msg time="2025-03-19T00:26:47.590961" level="INFO">Node startup parameters: ['node', 'C:\\Desafio coco bambu\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '51141']</msg>
-<status status="PASS" start="2025-03-19T00:26:47.002120" elapsed="0.539684"/>
+<msg time="2025-03-19T00:36:12.521836" level="INFO">Starting Browser process C:\Desafio coco bambu\.venv\Lib\site-packages\Browser\wrapper\index.js using port 51346</msg>
+<msg time="2025-03-19T00:36:12.522835" level="INFO">Node startup parameters: ['node', 'C:\\Desafio coco bambu\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '51346']</msg>
+<status status="PASS" start="2025-03-19T00:36:11.998791" elapsed="0.480502"/>
 </test>
-<doc>Testes de adiciona itens ao carrinho para um usuário especifico</doc>
-<status status="PASS" start="2025-03-19T00:26:44.959216" elapsed="4.283737"/>
+<doc>Este teste remove um item do carrinho utilizando uma requisição HTTP DELETE</doc>
+<status status="PASS" start="2025-03-19T00:36:10.133334" elapsed="4.011793"/>
 </suite>
-<status status="PASS" start="2025-03-19T00:26:44.954222" elapsed="4.357304"/>
+<status status="PASS" start="2025-03-19T00:36:10.128334" elapsed="4.061384"/>
 </suite>
-<status status="PASS" start="2025-03-19T00:26:44.909706" elapsed="4.404827"/>
+<status status="PASS" start="2025-03-19T00:36:10.095740" elapsed="4.096988"/>
 </suite>
 <statistics>
 <total>
@@ -97,7 +63,7 @@
 <suite>
 <stat name="Desafio coco bambu" id="s1" pass="1" fail="0" skip="0">Desafio coco bambu</stat>
 <stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests</stat>
-<stat name="Adicionar Item Carrinho" id="s1-s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests.Adicionar Item Carrinho</stat>
+<stat name="Remover Item Carrinho" id="s1-s1-s1" pass="1" fail="0" skip="0">Desafio coco bambu.Tests.Remover Item Carrinho</stat>
 </suite>
 </statistics>
 <errors>

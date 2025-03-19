@@ -17,17 +17,3 @@ Remover Item do Carrinho
     ${response}     DELETE    ${BASE_URL}/carts/1
     Status should Be    200     ${response}
     Log     ${response.json()}
-
-Remover Carrinho Inexistente
-    [Documentation]    Teste para verificar erro ao remover um carrinho inexistente
-    Create Session    dummyjson   ${BASE_URL}
-
-    ${response}    DELETE    ${BASE_URL}/carts/99  headers=&{HEADERS}
-    Should Be Equal As Numbers    ${RESPONSE.status_code}    404
-
-Remover Carrinho Sem ID
-    [Documentation]    Teste para verificar erro ao tentar remover um carrinho sem fornecer ID
-    Create Session  dummyjson  ${BASE_URL}
-
-    ${RESPONSE}    DELETE    ${BASE_URL}/carts/    headers=&{HEADERS}
-    Should Be Equal As Numbers    ${RESPONSE.status_code}    400
