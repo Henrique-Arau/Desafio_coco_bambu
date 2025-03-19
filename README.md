@@ -6,6 +6,10 @@ pip install --upgrade robotframework-seleniumlibrary - A principal dependência 
 Ela gera nomes, e-mails, senhas, endereços, etc, tudo fake e aleatório a cada execução.
  - pip install robotframework-faker
 
+## Baixe o ChromeDriver:
+Baixe a versão compatível do ChromeDriver aqui.
+Coloque-o em um diretório acessível e configure no PATH.
+
 
 ## pip install robotframework-browser:
 
